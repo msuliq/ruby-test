@@ -60,33 +60,33 @@ class Armadillo < Animal
 end 
 
 #run in the terminal to test the code
-#canary = Bird.new
-#canary.name = "Canary"
-#canary.age = 1
-#canary.report_age
-#canary.talk
-#canary.move("tree")
+canary = Bird.new
+canary.name = "Canary"
+canary.age = 1
+canary.report_age
+canary.talk
+canary.move("tree")
 
-#rex = Dog.new
-#rex.name = "Rex"
-#rex.age = 3
-#rex.report_age
-#rex.talk
-#rex.move("bed")
+rex = Dog.new
+rex.name = "Rex"
+rex.age = 3
+rex.report_age
+rex.talk
+rex.move("bed")
 
-#whiskers = Cat.new
-#whiskers.name = "Whiskers"
-#whiskers.age = 7
-#whiskers.report_age
-#whiskers.talk
-#whiskers.move("litter box")
+whiskers = Cat.new
+whiskers.name = "Whiskers"
+whiskers.age = 7
+whiskers.report_age
+whiskers.talk
+whiskers.move("litter box")
 
-#dillion = Armadillo.new
-#dillion.name = "Dillon"
-#dillion.age = 2
-#dillion.report_age
-#dillion.talk
-#dillion.move("burrow")
+dillion = Armadillo.new
+dillion.name = "Dillon"
+dillion.age = 2
+dillion.report_age
+dillion.talk
+dillion.move("burrow")
 
 lucy = Dog.new
 lucy.name = "Lucy"
