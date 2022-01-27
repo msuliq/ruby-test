@@ -21,8 +21,10 @@ class Employee
     def print_payslip
         puts "Name: #{@name}"
         #calculation of actual payable amount for 14 days
-        pay_for_period = (@salary / 365) * 14
-        puts "Pay for this period $#{pay_for_period}"
+        pay_for_period = (@salary / 365.0) * 14
+        #formatting of calculated result to include 2 decimals
+        formatted_pay = format("%.2f", pay_for_period)
+        puts "Pay for this period $#{formatted_pay}"
     end
 end
 
