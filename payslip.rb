@@ -45,7 +45,7 @@ class SalariedEmployee < Employee
     end
 
     #sets default name and salary for new employees as part of failsafe
-    def initialize(name = "Anonymous", salary = 0.0)
+    def initialize(name = "Anonymous Salaried", salary = 0.0)
         #prevents blank names and negative salary in default input
         #refers to name initialized in superclass
         super(name)
@@ -74,6 +74,20 @@ class HourlyEmployee < Employee
         @hours_per_week = hours_per_week
     end
 
+    #factory method for pre-defined employee categories
+    #guards work 30 hrs per week and get paid 19.25 per hour
+    def self.security_guard(name)
+        HourlyEmployee.new(name, 19.25, 30)
+    end
+    #cashiers work 25 hrs per week and get paid 12.75 per hour
+    def self.cashier(name)
+        HourlyEmployee.new(name, 12.75, 25)
+    end
+    #janitors work 20 hours per week and get paid 10.50 per hour
+    def self.janitor(name)
+        HourlyEmployee.new(name, 10.50, 20)
+    end
+
     #printing of payslip for hourly employees
     def print_payslip
         puts "Name: #{name}"
@@ -85,7 +99,7 @@ class HourlyEmployee < Employee
     end
 
     #sets default name and salary for new employees as part of failsafe
-    def initialize(name = "Anonymous", hourly_wage = 0.0, hours_per_week = 0.0)
+    def initialize(name = "Anonymous Hourly", hourly_wage = 0.0, hours_per_week = 0.0)
         #prevents blank names and negative figures in default input
         super(name)
         self.hourly_wage = hourly_wage
@@ -93,7 +107,7 @@ class HourlyEmployee < Employee
     end
 end
 
-#data input about employees
+#random employees added for testing
 salaried_employee = SalariedEmployee.new
 salaried_employee.name = "Jane Doe"
 salaried_employee.salary = 36000
@@ -107,3 +121,12 @@ hourly_employee.print_payslip
 
 hourly_employee = HourlyEmployee.new
 hourly_employee.print_payslip
+
+#hourly employees added by factory method
+angela = HourlyEmployee.security_guard("Angela Mathews")
+edwin = HourlyEmployee.janitor("Edwin Burgess")
+ivan = HourlyEmployee.cashier("Ivan Stokes")
+
+angela.print_payslip
+edwin.print_payslip
+ivan.print_payslip
