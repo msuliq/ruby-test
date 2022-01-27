@@ -19,9 +19,9 @@ class Employee
     end
 
     #sets default name and salary for new employees as part of failsafe
-    def initialize
-        @name = "Anonymous"
-        @salary = 0.0
+    def initialize(name = "Anonymous", salary = 0.0)
+        @name = name
+        @salary = salary
     end
 
     #printing of the payslip
