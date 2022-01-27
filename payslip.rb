@@ -1,8 +1,8 @@
 class Employee
     attr_reader :name, :salary
-    #provides data input failsafe
+    #failsafe to avoid errors when inputting new data on employees
+    #give error message if name is blank
     def name=(name)
-        #give error message if name is blank
         if name == ""
             raise "Name can't be blank!"
         end
@@ -10,13 +10,20 @@ class Employee
         @name = name 
     end
 
+    #give error message if salary is a negative number
     def salary=(salary)
-        #give error message if salary is a negative number
-        if salary < 0
+       if salary < 0
             raise "A salary of #{salary} is not valid!"
         end
         @salary = salary
     end
+
+    #sets default name and salary for new employees as part of failsafe
+    def initialize
+        @name = "Anonymous"
+        @salary = 0.0
+    end
+
     #printing of the payslip
     def print_payslip
         puts "Name: #{@name}"
@@ -35,3 +42,6 @@ amy.salary = 45000
 
 #runs in terminal
 amy.print_payslip
+
+employee = Employee.new
+employee.print_payslip
