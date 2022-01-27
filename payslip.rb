@@ -5,7 +5,7 @@
 class Employee
     attr_reader :name
     #failsafe to avoid errors when inputting new data on employees
-    #give error message if name is blank
+    #define method and give error message if name is blank
     def name=(name)
         if name == ""
             raise "Name can't be blank!"
@@ -16,6 +16,11 @@ class Employee
 #printing of name on payslips, common function for all employees
     def print_name
         puts "Name: #{name}"
+    end
+
+#initializing default name for subclasses
+    def initialize(name = "Anonymous")
+        self.name = name
     end
 end
 
@@ -42,7 +47,8 @@ class SalariedEmployee < Employee
     #sets default name and salary for new employees as part of failsafe
     def initialize(name = "Anonymous", salary = 0.0)
         #prevents blank names and negative salary in default input
-        self.name = name
+        #refers to name initialized in superclass
+        super(name)
         self.salary = salary
     end   
 end
@@ -59,7 +65,7 @@ class HourlyEmployee < Employee
         end
         @hourly_wage = hourly_wage
     end
-    
+
     #give error message if hours per week are a negative number
     def hours_per_week=(hours_per_week)
         if hours_per_week < 0
@@ -77,6 +83,14 @@ class HourlyEmployee < Employee
         formatted_pay = format("%.2f", pay_for_period)
         puts "Pay for this period $#{formatted_pay}"
     end
+
+    #sets default name and salary for new employees as part of failsafe
+    def initialize(name = "Anonymous", hourly_wage = 0.0, hours_per_week = 0.0)
+        #prevents blank names and negative figures in default input
+        super(name)
+        self.hourly_wage = hourly_wage
+        self.hours_per_week = hours_per_week
+    end
 end
 
 #data input about employees
@@ -89,4 +103,7 @@ hourly_employee = HourlyEmployee.new
 hourly_employee.name = "John Doe"
 hourly_employee.hourly_wage = 14.99
 hourly_employee.hours_per_week = 30
+hourly_employee.print_payslip
+
+hourly_employee = HourlyEmployee.new
 hourly_employee.print_payslip
