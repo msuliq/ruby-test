@@ -18,12 +18,10 @@ end
 #calculation of deductibles from client account
 def refund(prices)
     amount = 0
-    index = 0
-    while index < prices.length
-        #deducts current price item
-        amount -= prices[index]
-        #and moves to next price item
-        index += 1
+    #process each price item
+    prices.each do |price|
+        #deduct current price item
+        amount -= price
     end
     amount
 end 
