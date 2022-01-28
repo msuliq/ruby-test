@@ -28,15 +28,15 @@ end
 
 #calculation of 1/3 discount
 def show_discounts(prices)
-    index = 0
-    while index < prices.length
-        #calculated 1/3 discount for current price item
-        amount_off = prices[index] / 3.0
+    #no need to specify amount = 0 since it's irrelevant
+    prices.each do |price|
+        #calculate 1/3 discount for current price item
+        amount_off = price / 3.0
         puts format("Your discount: $%.2f", amount_off)
-        index += 1
     end
 end
 
+#output in terminal window
 prices = [3.99, 25.00, 8.99]
 puts format("Total amount is: %.2f", total(prices))
 puts format("Amount due is: %.2f", refund(prices))
