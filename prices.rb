@@ -6,14 +6,11 @@
 def total(prices)
     #define amount method to call updated amount later
     amount = 0
-    index = 0
-    #until the cycle reaches array limit
-    while index < prices.length
-        #current price is added to the accumulation
-        amount += prices[index]
-        #move to next price item
-        index += 1
-    end
+    #process each price in array
+    prices.each do |price|
+        #add current price
+        amount += price
+    end 
     #show updated amount
     amount
 end
