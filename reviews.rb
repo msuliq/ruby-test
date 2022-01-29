@@ -7,16 +7,14 @@ File.open("reviews.txt") do |review_file|
     #return file lines as array
     lines = review_file.readlines
 end
-    
-    #create variable for relevant lines outside the block
-    relevant_lines = []
-    #processing each line in text
-    lines.each do |line|
-        #sort lines that include Truncated
-        if line.include?("Truncated")
-            #the line is added to variable
-            relevant_lines << line
-        end
-    end
-    
-    puts relevant_lines
+
+#find all lines that have a line with Truncated in it and then 
+#add those lines to relevant lines variable
+relevant_lines = lines.find_all { |line| line.include?("Truncated") }
+
+#remove signature lines in text that begin with --
+#lines with -- are rejected from the relevant lines
+reviews = relevant_lines.reject { |line| line.include?("--") }
+
+#displays relevant lines found
+puts reviews
