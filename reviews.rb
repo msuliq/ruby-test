@@ -19,7 +19,7 @@ reviews = relevant_lines.reject { |line| line.include?("--") }
 #find adjective in each line, which follows "is" in a sentence
 def find_adjective(string)
     #words split by space are sorted out
-    words = string.split(" ")
+    words = string.split(" ") 
     #find "is" among the sorted out words
     index = words.find_index("is")
     #adjective follows after "is" in a sentence
@@ -28,11 +28,16 @@ end
 
 #find adjectives is applied to review, found adjectives are
 #stored in adjectives array
-adjectives = reviews.map { |review|  find_adjective(review) }
+adjectives = reviews.map do |review|
+    adjective = find_adjective(review)
+    "'#{adjective.capitalize}'"
+end
 
 #displays all lines with Truncated in it
-puts relevant_lines
+#puts relevant_lines
 #displays lines found excluding signature lines
-puts reviews
+#puts reviews
+
 #displays found adjectives relevant to Truncated
+puts "The critics agree, Truncated is:"
 puts adjectives
