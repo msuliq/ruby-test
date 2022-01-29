@@ -19,7 +19,12 @@ reviews = relevant_lines.reject { |line| line.include?("--") }
 #find adjective in each line, which follows "is" in a sentence
 def find_adjective(string)
     #words split by space are sorted out
-    words = string.split(" ") 
+    words = string.split(" ").map { |s| s.gsub(/[[:punct:]]/, '') }
+    #NB:
+    #split returns arrays and gsub does not work on arrays
+    #so map is used here to apply gsub to strings and remove
+    #punctuation from results
+
     #find "is" among the sorted out words
     index = words.find_index("is")
     #adjective follows after "is" in a sentence
