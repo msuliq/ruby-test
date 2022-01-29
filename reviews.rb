@@ -16,5 +16,23 @@ relevant_lines = lines.find_all { |line| line.include?("Truncated") }
 #lines with -- are rejected from the relevant lines
 reviews = relevant_lines.reject { |line| line.include?("--") }
 
-#displays relevant lines found
+#find adjective in each line, which follows "is" in a sentence
+def find_adjective(string)
+    #words split by space are sorted out
+    words = string.split(" ")
+    #find "is" among the sorted out words
+    index = words.find_index("is")
+    #adjective follows after "is" in a sentence
+    words[index+1]
+end
+
+#find adjectives is applied to review, found adjectives are
+#stored in adjectives array
+adjectives = reviews.map { |review|  find_adjective(review) }
+
+#displays all lines with Truncated in it
+puts relevant_lines
+#displays lines found excluding signature lines
 puts reviews
+#displays found adjectives relevant to Truncated
+puts adjectives
