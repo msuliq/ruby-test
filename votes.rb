@@ -15,12 +15,11 @@ votes = {}
 lines.each do |line|
     #remove /n from end of the line
     name = line.chomp
-    if votes[name] != nil
+    if votes[name]
     votes[name] += 1       
     else
-        votes[name] = 1
-       
-   end
+    votes[name] = 1   
+    end
 end
 
 #display votes in terminal
