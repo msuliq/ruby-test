@@ -10,16 +10,13 @@ File.open("votes.txt") do |file|
 end
 
 #create an empty hash to store votes
-votes = {}
+#set default hash value to zero to avoid nil return
+votes = Hash.new(0)
 #process each line in array
 lines.each do |line|
     #remove /n from end of the line
     name = line.chomp
-    if votes[name]
-    votes[name] += 1       
-    else
-    votes[name] = 1   
-    end
+    votes[name] += 1
 end
 
 #display votes in terminal
