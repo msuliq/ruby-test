@@ -26,3 +26,30 @@ end
 votes.each do |name, count|
     puts "#{name}: #{count}"
 end
+
+#script to display information about the candidates
+#create class and data fields for a candidate
+class Candidate
+attr_accessor :name, :age, :occupation, :hobby, :birthplace
+#set default fields for creation of new candidate profile
+    def initialize(name, age, occupation, hobby, birthplace)
+    #parameters passed to object attributes
+    self.name = name
+    self.age = age
+    self.occupation = occupation
+    self.hobby = hobby
+    self.birthplace = birthplace
+    end
+end 
+
+#script for display of candidate info
+def print_summary(candidate)
+    puts "Candidate: #{candidate.name}"
+    puts "Age: #{candidate.age}"
+    puts "Occupation: #{candidate.occupation}"
+    puts "Hobby: #{candidate.hobby}"
+    puts "Birthplace: #{candidate.birthplace}"
+end
+
+candidate = Candidate.new("Amber Graham", 49, "Attorney", nil, "Miami")
+print_summary(candidate)
