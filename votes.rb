@@ -32,13 +32,14 @@ end
 class Candidate
 attr_accessor :name, :age, :occupation, :hobby, :birthplace
 #set default fields for creation of new candidate profile
-    def initialize(name, age, occupation, hobby, birthplace)
-    #parameters passed to object attributes
+    #name is stored in separate line, options are for hash
+    def initialize(name, options)
+    #parameters that are passed to object attributes
     self.name = name
-    self.age = age
-    self.occupation = occupation
-    self.hobby = hobby
-    self.birthplace = birthplace
+    self.age = options[:age]
+    self.occupation = options[:occupation]
+    self.hobby = options[:hobby]
+    self.birthplace = options[:birthplace]
     end
 end 
 
@@ -51,5 +52,7 @@ def print_summary(candidate)
     puts "Birthplace: #{candidate.birthplace}"
 end
 
-candidate = Candidate.new("Amber Graham", 49, "Attorney", nil, "Miami")
+candidate = Candidate.new("Amber Graham", {:age => 37, :occupation => "Engineer", :hobby => "Lacrosse", :birthplace => "Seattle"})
 print_summary(candidate)
+
+#Brian Martin
