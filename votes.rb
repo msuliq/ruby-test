@@ -52,7 +52,9 @@ def print_summary(candidate)
     puts "Birthplace: #{candidate.birthplace}"
 end
 
-candidate = Candidate.new("Amber Graham", {:age => 37, :occupation => "Engineer", :hobby => "Lacrosse", :birthplace => "Seattle"})
+#curly brackets can be omitted if hash is in last argument
+candidate = Candidate.new("Amber Graham", age: 37, occupation: "Engineer", hobby: "Lacrosse", birthplace: "Seattle")
 print_summary(candidate)
-
-#Brian Martin
+#same code with curly brackets and =>
+candidate = Candidate.new("Brian Martin", {:birthplace => "Miami", :occupation => "Attorney", :age => 42})
+print_summary(candidate)
