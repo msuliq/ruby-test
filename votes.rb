@@ -16,6 +16,9 @@ votes = Hash.new(0)
 lines.each do |line|
     #remove /n from end of the line
     name = line.chomp
+    #normalize lettercase in text file
+    name.upcase!
+    #assign votes to each name while processing lines
     votes[name] += 1
 end
 
