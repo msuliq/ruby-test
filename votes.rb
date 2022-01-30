@@ -22,6 +22,7 @@ lines.each do |line|
     votes[name] += 1
 end
 
-#display votes in terminal
-p votes
-
+#display of results in terminal
+votes.each do |name, count|
+    puts "#{name}: #{count}"
+end
