@@ -13,13 +13,9 @@ end
 module AcceptsComments
     #define commenting
     def comments
-        #if comments exist then use comments array
-        if @comments
-            @comments
-        #if this is a first comment then add it to an empty array
-        else
-            @comments = []
-        end
+        #if @comments is nil then empty arrays is assigned
+        #else method returns @comments
+        @comments ||= []
     end
     #add comments
     def add_comment(comment)
@@ -44,10 +40,14 @@ class Song < Clip
     attr_accessor :beats_per_minute
 end
 
-#subclass for photo files
+#separate for photo files, unrelated to SuperClass
 class Photo
     #add commenting module
     include AcceptsComments
+    #set default format
+    def initialize
+        @format = 'JPEG'
+    end
     #display of image
     def show
         puts "Displaying #{object_id}..."
