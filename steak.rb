@@ -2,14 +2,13 @@
 
 #set class for steak and grade parameter
 class Steak
+    #CONSTANT grade scores for prime, choice and select steaks
+    GRADE_SCORES = {"Prime" => 3, "Choice" => 2, "Select" => 1}
     attr_accessor :grade
-
     #define second steak that will be compared against
     def > (other)
-        #grade scores for prime, choice and select steaks
-        grade_scores = {"Prime" => 3, "Choice" => 2, "Select" => 1}
         #comparison of grades
-        grade_scores[grade] > grade_scores[other.grade]
+        GRADE_SCORES[grade] > GRADE_SCORES[other.grade]
     end
 end
 
