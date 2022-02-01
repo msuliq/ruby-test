@@ -6,9 +6,16 @@ class Steak
     GRADE_SCORES = {"Prime" => 3, "Choice" => 2, "Select" => 1}
     attr_accessor :grade
     #define second steak that will be compared against
-    def > (other)
+    #<=> enables comparable module
+    def <=> (other)
         #comparison of grades
-        GRADE_SCORES[grade] > GRADE_SCORES[other.grade]
+        if GRADE_SCORES[self.grade] < GRADE_SCORES[other.grade]
+            return -1
+        elsif GRADE_SCORES[self.grade] == GRADE_SCORES[other.grade]
+            return 0
+        else
+            return 1
+        end
     end
 end
 
@@ -17,6 +24,5 @@ first_steak.grade = "Prime"
 second_steak = Steak.new
 second_steak.grade = "Choice"
 
-if first_steak > second_steak
-    puts "I'll take #{first_steak.inspect}"
-end
+puts first_steak <=> second_steak
+puts second_steak <=> first_steak
