@@ -1,5 +1,11 @@
 #script to simulate oven operation and handle errors
 
+#create two classes for exception handling: oevn off & oven empty
+class OvenOffError < StandardError
+end
+class OvenEmptyError < StandardError
+end
+
 #create class for oven
 class SmallOven
 #create attribute for oven contents
@@ -18,11 +24,11 @@ end
 def bake
     #error handling for oven off
     unless @state == "on"
-        raise "You need to turn the oven on first."
+        raise OvenOffError, "You need to turn the oven on first."
     end
     #error handling for empty oven
     if @contents == nil
-        raise "There is nothing in the oven."
+        raise OvenEmptyError, "There is nothing in the oven."
     end
     "golden brown #{contents}"
 end 
@@ -38,14 +44,16 @@ dinner.each do |item|
     begin
         oven.contents = item
         puts "Serving #{oven.bake}."
-    #error message taken from relevant raise method
-    rescue => error
-        puts "Error: #{error.message}"
+    #if oven off, call error class and turn on the oven    
+rescue OvenOffError => error
+        oven.turn_on
+        #restarts begin block once oven is on
+        retry
     end
 end
 
 #handling of error with empty oven
-dinner = ['turkey', nil, 'pie']
+dinner = [nil]
 oven = SmallOven.new
 oven.turn_on
 dinner.each do |item|
@@ -53,7 +61,11 @@ dinner.each do |item|
     begin
         oven.contents = item
         puts "Serving #{oven.bake}."
-    rescue => error
+    #if oven empty, displays error message
+    rescue OvenEmptyError => error
         puts "Error: #{error.message}"
+        #ensure that oven is off afterwards
+    ensure
+        oven.turn_off
     end
 end
