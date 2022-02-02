@@ -6,6 +6,10 @@ class ListWithCommas
     attr_accessor :items
 #define joining of items with commas or with "and"
     def join
+        #if list has only two subjects
+        if items.length == 2
+            return "#{items[0]} and #{items[1]}"
+        end
         #last item added with "and" in front
         last_item = "and #{items.last}"
         #other items added with commas, elements from 0 to one before last are taken and joined with comma
@@ -13,6 +17,11 @@ class ListWithCommas
         "#{other_items}, #{last_item}"
     end
 end
+
+#test for one subject
+one_subject = ListWithCommas.new
+one_subject.items = ['a rodeo clown']
+puts "A photo of #{one_subject.join}"
 
 #test for two subjects
 two_subjects = ListWithCommas.new
