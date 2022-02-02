@@ -28,13 +28,21 @@ end
 
 #test run in terminal
 #handling of error with oven off
-oven = SmallOven.new
-oven.turn_off
-oven.contents = 'turkey'
-puts "Serving #{oven.bake}."
+#oven = SmallOven.new
+#oven.turn_off
+#oven.contents = 'turkey'
+#puts "Serving #{oven.bake}."
 
 #handling of error with empty oven
+dinner = ['turkey', nil, 'pie']
 oven = SmallOven.new
 oven.turn_on
-oven.contents = nil
-puts "Serving #{oven.bake}."
+dinner.each do |item|
+    #handling of exceptions for empty oven
+    begin
+        oven.contents = item
+        puts "Serving #{oven.bake}."
+    rescue
+        puts "Error: There is nothing in the oven"
+    end
+end
