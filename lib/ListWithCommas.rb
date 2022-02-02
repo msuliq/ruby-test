@@ -6,8 +6,11 @@ class ListWithCommas
     attr_accessor :items
 #define joining of items with commas or with "and"
     def join
+        #if there one single item only
+        if items.length == 1
+            return items[0]
         #if list has only two subjects
-        if items.length == 2
+        elsif items.length == 2
             return "#{items[0]} and #{items[1]}"
         end
         #last item added with "and" in front
