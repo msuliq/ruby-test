@@ -13,7 +13,7 @@ class TestListWithCommas < Minitest::Test
         list.items = ['apple']
         #comparison of test run and list join result
         #if true - test pass, if false - test fail
-        assert('apple' == list.join, "Return value did not equal 'apple'")
+        assert_equal('apple', list.join)
     end
     #test of joining two subjects
     def test_it_joins_two_words_with_and
@@ -21,7 +21,7 @@ class TestListWithCommas < Minitest::Test
         #two sample subjects for the test
         list.items = ['apple', 'orange']
         #test is passed if join returns the required line
-        assert('apple and orange' == list.join, "Return value did meet requirements for 2 subjects")
+        assert_equal('apple and orange', list.join)
     end
     #test of joining three subjects
     def test_it_joins_three_words_with_commas
@@ -29,6 +29,6 @@ class TestListWithCommas < Minitest::Test
         #three sample subjects for the test
         list = ['apple', 'orange', 'pear']
         #test passed if join return same line
-        assert('apple, orange, and pear' == list.join, "Return value did meet requirements for 3 subjects")
+        assert_equal('apple, orange, and pear', list.join)
     end
 end
