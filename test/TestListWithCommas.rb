@@ -29,7 +29,7 @@ class TestListWithCommas < Minitest::Test
     #test of joining three subjects
     def test_it_joins_three_words_with_commas
         #three sample subjects for the test
-        @list = ['apple', 'orange', 'pear']
+        @list.items = ['apple', 'orange', 'pear']
         #test passed if join return same line
         assert_equal('apple, orange, and pear', @list.join)
     end
