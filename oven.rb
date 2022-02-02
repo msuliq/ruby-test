@@ -17,22 +17,24 @@ end
 #define baking simulation
 def bake
     unless @state == "on"
-        return "You need to turn the oven on first."
+        raise "You need to turn the oven on first."
     end
     if @contents == nil
-        return "There is nothing in the oven."
+        raise "There is nothing in the oven."
     end
     "golden brown #{contents}"
 end 
 end
 
 #test run in terminal
-#create contents for oven
-dinner = ['turkey', 'casserole', 'pie']
+#handling of error with oven off
+oven = SmallOven.new
+oven.turn_off
+oven.contents = 'turkey'
+puts "Serving #{oven.bake}."
+
+#handling of error with empty oven
 oven = SmallOven.new
 oven.turn_on
-#process each contents item
-dinner.each do |item|
-oven.contents = item
-puts "Serving #{oven.bake}"
-end
+oven.contents = nil
+puts "Serving #{oven.bake}."
