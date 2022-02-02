@@ -10,7 +10,7 @@ class ListWithCommas
         last_item = "and #{items.last}"
         #other items added with commas, elements from 0 to one before last are taken and joined with comma
         other_items = items.slice(0, items.length - 1).join(', ')
-        "#{other_items} #{last_item}"
+        "#{other_items}, #{last_item}"
     end
 end
 
