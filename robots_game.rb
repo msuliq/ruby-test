@@ -1,27 +1,31 @@
 #terminal game with moving robots
 
+#super class for player
+
+class Player 
+#accessors for movements coordinates
+attr_accessor :x, :y
+#starting point from the center of the field
+def initialize( options={} )
+    @x = options[:x] || 0 
+    @y = options[:y] || 0
+end
+#methods for moves
+def right 
+    self.x += 1
+end
+def left
+    self.x =- 1
+end
+def up
+    self.y += 1
+end
+def down 
+    self.y -= 1
+end
+end
 #class for robot
-class Robot
-    #accessors for movements coordinates
-    attr_accessor :x, :y
-    #starting point from the center of the field
-    def initialize( options={} )
-        @x = options[:x] || 0 
-        @y = options[:y] || 0
-    end
-    #methods for moves
-    def right 
-        self.x += 1
-    end
-    def left
-        self.x =- 1
-    end
-    def up
-        self.y += 1
-    end
-    def down 
-        self.y -= 1
-    end
+class Robot < Player
     #method for displaying robots on the field
     def label
         '*'
@@ -29,9 +33,16 @@ class Robot
 end
 
 #class for dog
-class Dog
+class Dog < Player
     def label 
         '@'
+    end
+end
+
+#class for human
+class Human < Player
+    def label
+        'H'
     end
 end
 
@@ -52,7 +63,7 @@ commander = Commander.new
 #create an array of ten robots
 arr = Array.new(10) {Robot.new}
 #create one dog on the field
-arr.push(Dog.new (x: -12, y: 12))
+arr.push(Dog.new(x: -12, y: 12))
 
 #to end the loop press Ctrl+C
 loop do
@@ -85,6 +96,9 @@ loop do
         puts "Game over"
         exit
     end
+
+    #check if the dog crosses the field
+
 
     #robot is randomly moved
     arr.each do |somebody|
