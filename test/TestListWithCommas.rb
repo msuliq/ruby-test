@@ -3,7 +3,7 @@
 #load minitest module
 require 'minitest/autorun'
 #load the test class
-require 'listwithcommas'
+require_relative '../lib/ListWithCommas'
 
 class TestListWithCommas < Minitest::Test
     #setup of testing conditions
