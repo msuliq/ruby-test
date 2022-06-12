@@ -1,13 +1,16 @@
 # Дана строка s и словарь dict , содержащий некие слова. Определите, можно ли строку s сегментировать в 
 # последовательность разделенных пробелом слов, содержащихся в словаре dict.
+# Пример: дано, s = «двадесятка», dict = [«два», «десятка», «девятка»]. 
+# Программа должна вернуть true, потому что «двадесятка» могут быть сементированы как «два десятка».
 
+require 'set'
 
-string = 'brown fox jumps over the fence'
-dict = ['fox', 'cat', 'yellow', 'hedge', 'the', 'ruby']
+string1 = 'twenty two'
+string2 = 'thirty one'
+string3 = 'forty five'
+dict = ['twenty', 'two', 'ten', 'five']
 
-# returns words in a sentence that match the dictionary
-puts string.split(" ").to_a & dict
-# returns words in a sentence and all words in dictionary, no duplicates
-puts string.split(" ").to_a | dict
-# returns words that are not contained dictionary
-puts string.split(" ").to_a - dict
+puts string1.split(" ").to_set.intersect?(dict.to_set)
+puts string2.split(" ").to_set.intersect?(dict.to_set)
+puts string3.split(" ").to_set.intersect?(dict.to_set)
+
